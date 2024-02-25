@@ -1,9 +1,7 @@
-import MainPageComponent from '../../pages/main-page';
+import MainPage from '../../pages/main-page';
 
-export default function AppComponent() {
+export default function AppComponent(): JSX.Element {
   return(
-    <>
-    <MainPageComponent placesCount={5}/>
-    </>
+    <MainPage placesCount={5}/>
   );
 }

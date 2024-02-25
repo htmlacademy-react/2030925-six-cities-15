@@ -8,7 +8,7 @@ type CardItemProps = {
 }
 
 export default function CardItemComponent(props: CardItemProps): JSX.Element {
-  let {isPremium,cardPrice,cardImg,cardBookmarks,cardDescription,cardType} = props;
+  const {isPremium,cardPrice,cardImg,cardBookmarks,cardDescription,cardType} = props;
 
   return(
     <article className="cities__card place-card">
@@ -18,7 +18,7 @@ export default function CardItemComponent(props: CardItemProps): JSX.Element {
             <span>Premium</span>
           </div>}
         <a href="#">
-        <img className="place-card__image" src={cardImg} width="260" height="200" alt="Place image"/>
+          <img className="place-card__image" src={cardImg} width="260" height="200" alt="Place image"/>
         </a>
       </div>
       <div className="place-card__info">
