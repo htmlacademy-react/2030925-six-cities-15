@@ -7,7 +7,7 @@ type MainPageProps = {
     placesCount: number;
 }
 
-export default function MainPageComponent({placesCount}: MainPageProps): JSX.Element {
+export default function MainPage({placesCount}: MainPageProps): JSX.Element {
   return(
     <body>
       <div className="page page--gray page--main">
@@ -40,7 +40,7 @@ export default function MainPageComponent({placesCount}: MainPageProps): JSX.Ele
                   </ul>
                 </form>
                 <div className="cities__places-list places__list tabs__content">
-                <CardListComponent/>
+                  <CardListComponent/>
                 </div>
               </section>
               <MapComponent/>

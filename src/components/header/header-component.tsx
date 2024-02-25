@@ -1,8 +1,8 @@
-import LogoComponent from "../logo/logo-component";
+import LogoComponent from '../logo/logo-component';
 
 export default function HeaderComponent(): JSX.Element {
-    return(
-      <header className="header">
+  return(
+    <header className="header">
       <div className="container">
         <div className="header__wrapper">
           <div className="header__left">
@@ -28,5 +28,5 @@ export default function HeaderComponent(): JSX.Element {
         </div>
       </div>
     </header>
-    );
+  );
 }

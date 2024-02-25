@@ -1,4 +1,4 @@
-export default function LoginPageComponent() {
+export default function LoginPage(): JSX.Element {
   return(
     <body>
       <div className="page page--gray page--login">

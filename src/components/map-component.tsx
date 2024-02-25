@@ -1,7 +1,7 @@
-export default function MapComponent() {
-    return(
+export default function MapComponent(): JSX.Element {
+  return(
     <div className="cities__right-section">
-        <section className="cities__map map"></section>
+      <section className="cities__map map"></section>
     </div>
-    );
+  );
 }

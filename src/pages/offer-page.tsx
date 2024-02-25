@@ -1,6 +1,6 @@
-import HeaderComponent from "../components/header/header-component";
+import HeaderComponent from '../components/header/header-component';
 
-export default function OfferPageComponent() {
+export default function OfferPage(): JSX.Element {
   return(
     <body>
       <div className="page">
