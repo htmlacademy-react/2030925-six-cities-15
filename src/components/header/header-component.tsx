@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import LogoComponent from '../logo/logo-component';
+import { AppRoute } from '../../const';
 
 export default function HeaderComponent(): JSX.Element {
   return(
@@ -19,9 +21,9 @@ export default function HeaderComponent(): JSX.Element {
                 </a>
               </li>
               <li className="header__nav-item">
-                <a className="header__nav-link" href="#">
+                <Link className="header__nav-link" to={AppRoute.Login}>
                   <span className="header__signout">Sign out</span>
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>

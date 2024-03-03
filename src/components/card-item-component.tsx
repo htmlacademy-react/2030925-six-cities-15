@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 type CardItemProps = {
   isPremium: boolean;
   cardPrice: number;
@@ -17,9 +19,9 @@ export default function CardItemComponent(props: CardItemProps): JSX.Element {
           <div className="place-card__mark">
             <span>Premium</span>
           </div>}
-        <a href="#">
+        <Link to="offer/1">
           <img className="place-card__image" src={cardImg} width="260" height="200" alt="Place image"/>
-        </a>
+        </Link>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
@@ -41,7 +43,7 @@ export default function CardItemComponent(props: CardItemProps): JSX.Element {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{cardDescription}</a>
+          <Link to="offer/1">{cardDescription}</Link>
         </h2>
         <p className="place-card__type">{cardType}</p>
       </div>
