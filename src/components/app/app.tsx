@@ -13,17 +13,30 @@ export default function AppComponent(): JSX.Element {
   return(
     <BrowserRouter>
       <Routes>
-        <Route path={AppRoute.Main}/>
-        <Route index element={<MainPage placesCount={5}/>}/>
-        <Route path={AppRoute.Login} element={<LoginPage/>}/>
-        <Route path={AppRoute.Offer} element={<OfferPage/>}/>
-        <Route path={AppRoute.Favorites} element={
-          <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-            <FavoritesPage/>
-          </PrivateRoute>
-        }
+        <Route
+          path={AppRoute.Main}
+          element={<MainPage placesCount={5}/>}
         />
-        <Route path={AppRoute.Error} element={<ErrorPage/>}/>
+        <Route
+          path={AppRoute.Login}
+          element={<LoginPage/>}
+        />
+        <Route
+          path={AppRoute.Offer}
+          element={<OfferPage/>}
+        />
+        <Route
+          path={AppRoute.Favorites}
+          element={
+            <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+              <FavoritesPage/>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path={AppRoute.Error}
+          element={<ErrorPage/>}
+        />
       </Routes>
     </BrowserRouter>
   );
