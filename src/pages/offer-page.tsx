@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import HeaderComponent from '../components/header/header-component';
+import { AppRoute } from '../const';
 
 export default function OfferPage(): JSX.Element {
   return(
@@ -207,9 +209,9 @@ export default function OfferPage(): JSX.Element {
               <div className="near-places__list places__list">
                 <article className="near-places__card place-card">
                   <div className="near-places__image-wrapper place-card__image-wrapper">
-                    <a href="#">
+                    <Link to={AppRoute.Main}>
                       <img className="place-card__image" src="img/room.jpg" width="260" height="200" alt="Place image"/>
-                    </a>
+                    </Link>
                   </div>
                   <div className="place-card__info">
                     <div className="place-card__price-wrapper">
@@ -231,7 +233,7 @@ export default function OfferPage(): JSX.Element {
                       </div>
                     </div>
                     <h2 className="place-card__name">
-                      <a href="#">Wood and stone place</a>
+                      <Link to={AppRoute.Main}>Wood and stone place</Link>
                     </h2>
                     <p className="place-card__type">Room</p>
                   </div>
@@ -239,9 +241,9 @@ export default function OfferPage(): JSX.Element {
 
                 <article className="near-places__card place-card">
                   <div className="near-places__image-wrapper place-card__image-wrapper">
-                    <a href="#">
+                    <Link to={AppRoute.Main}>
                       <img className="place-card__image" src="img/apartment-02.jpg" width="260" height="200" alt="Place image"/>
-                    </a>
+                    </Link>
                   </div>
                   <div className="place-card__info">
                     <div className="place-card__price-wrapper">
@@ -263,7 +265,7 @@ export default function OfferPage(): JSX.Element {
                       </div>
                     </div>
                     <h2 className="place-card__name">
-                      <a href="#">Canal View Prinsengracht</a>
+                      <Link to={AppRoute.Main}>Canal View Prinsengracht</Link>
                     </h2>
                     <p className="place-card__type">Apartment</p>
                   </div>
@@ -274,9 +276,9 @@ export default function OfferPage(): JSX.Element {
                     <span>Premium</span>
                   </div>
                   <div className="near-places__image-wrapper place-card__image-wrapper">
-                    <a href="#">
+                    <Link to={AppRoute.Main}>
                       <img className="place-card__image" src="img/apartment-03.jpg" width="260" height="200" alt="Place image"/>
-                    </a>
+                    </Link>
                   </div>
                   <div className="place-card__info">
                     <div className="place-card__price-wrapper">
@@ -298,7 +300,7 @@ export default function OfferPage(): JSX.Element {
                       </div>
                     </div>
                     <h2 className="place-card__name">
-                      <a href="#">Nice, cozy, warm big bed apartment</a>
+                      <Link to={AppRoute.Main}>Nice, cozy, warm big bed apartment</Link>
                     </h2>
                     <p className="place-card__type">Apartment</p>
                   </div>
