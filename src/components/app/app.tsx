@@ -1,7 +1,5 @@
 import MainPage from '../../pages/main-page';
-import { BrowserRouter } from 'react-router-dom';
-import { Routes } from 'react-router-dom';
-import { Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginPage from '../../pages/login-page';
 import OfferPage from '../../pages/offer-page';
 import FavoritesPage from '../../pages/favorites-page';
@@ -28,7 +26,7 @@ export default function AppComponent(): JSX.Element {
         <Route
           path={AppRoute.Favorites}
           element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
               <FavoritesPage/>
             </PrivateRoute>
           }
