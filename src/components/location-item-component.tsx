@@ -1,5 +1,5 @@
 type LocationItemProps = {
-    cityName: string;
+  cityName: string;
 };
 
 

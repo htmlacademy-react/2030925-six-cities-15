@@ -2,36 +2,19 @@ import { Link } from 'react-router-dom';
 import { AppRoute, MAX_RATING } from '../const';
 import { CardType } from '../types/card-type';
 
-type CardItemProps = {
+type NearPlacesCardProps = {
   card: CardType;
-  handleHover: (card?: CardType) => void;
 }
 
-export default function CardItemComponent(props: CardItemProps): JSX.Element {
-  const {card, handleHover} = props;
-
-  const {id, isPremium, price, previewImage, isFavorite, title, type, rating} = card;
+export default function NearPlacesItemComponent(props: NearPlacesCardProps): JSX.Element {
+  const {card} = props;
+  const {id, previewImage, price, isFavorite, rating, title, type} = card;
 
   const ratingStarline = `${rating * (100 / MAX_RATING)}%`;
 
-  const handleMouseOn = () => {
-    handleHover(card);
-  };
-
-  const handleMouseLeave = () => {
-    handleHover();
-  };
-
   return(
-    <article className="cities__card place-card"
-      onMouseEnter={handleMouseOn}
-      onMouseLeave={handleMouseLeave}
-    >
-      <div className="cities__image-wrapper place-card__image-wrapper">
-        {isPremium &&
-          <div className="place-card__mark">
-            <span>Premium</span>
-          </div>}
+    <article className="near-places__card place-card">
+      <div className="near-places__image-wrapper place-card__image-wrapper">
         <Link to={`${AppRoute.Offer}/${id}`}>
           <img className="place-card__image" src={previewImage} width="260" height="200" alt="Place image"/>
         </Link>
@@ -42,11 +25,11 @@ export default function CardItemComponent(props: CardItemProps): JSX.Element {
             <b className="place-card__price-value">&euro;{price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <button className={isFavorite ? 'place-card__bookmark-button place-card__bookmark-button--active button' : 'place-card__bookmark-button button'} type="button">
+          <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button">
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark"></use>
             </svg>
-            <span className="visually-hidden"></span>
+            <span className="visually-hidden">{isFavorite ? 'To bookmarks' : 'In bookmarks'}</span>
           </button>
         </div>
         <div className="place-card__rating rating">
@@ -63,4 +46,3 @@ export default function CardItemComponent(props: CardItemProps): JSX.Element {
     </article>
   );
 }
-
