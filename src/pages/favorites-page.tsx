@@ -1,10 +1,14 @@
 import { Link } from 'react-router-dom';
 import HeaderComponent from '../components/header/header-component';
 import { AppRoute } from '../const';
-import FavoriteCardListComponent from '../components/favorite-card-list-component';
+import CardListComponent from '../components/card-list-component';
+import { CardType } from '../types/card-type';
 
-export default function FavoritesPage(): JSX.Element {
+type FavoritesPageProps = {
+  cards: CardType[];
+}
 
+export default function FavoritesPage({cards}: FavoritesPageProps): JSX.Element {
   return(
     <body>
       <div className="page">
@@ -14,7 +18,22 @@ export default function FavoritesPage(): JSX.Element {
             <section className="favorites">
               <h1 className="favorites__title">Saved listing</h1>
               <ul className="favorites__list">
-                <FavoriteCardListComponent/>
+                <li className="favorites__locations-items">
+                  <div className="favorites__locations locations locations--current">
+                    <div className="locations__item">
+                      <Link className="locations__item-link" to={AppRoute.Main}>
+                        <span>Amsterdam</span>
+                      </Link>
+                    </div>
+                  </div>
+                  <CardListComponent
+                    cards={cards}
+                    width={150}
+                    height={110}
+                    article='favorites'
+                    listType='favorites__places'
+                  />
+                </li>
               </ul>
             </section>
           </div>

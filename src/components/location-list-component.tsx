@@ -1,10 +1,13 @@
-import { CITIES } from '../const';
 import LocationsItemComponent from './location-item-component';
 
-export default function LocationsListComponent(): JSX.Element {
+type LocationsListProps = {
+  cities: string[];
+};
+
+export default function LocationsListComponent({cities}: LocationsListProps): JSX.Element {
   return(
     <ul className="locations__list tabs__list">
-      {CITIES.map((city: string) => (
+      {cities.map((city: string) => (
         <LocationsItemComponent
           key={city}
           cityName={city}

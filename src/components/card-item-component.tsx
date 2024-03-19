@@ -1,18 +1,19 @@
 import { Link } from 'react-router-dom';
-import { AppRoute, MAX_RATING } from '../const';
+import { AppRoute, RATING_STARLINE } from '../const';
 import { CardType } from '../types/card-type';
 
 type CardItemProps = {
   card: CardType;
   handleHover: (card?: CardType) => void;
-}
+  width: number;
+  height: number;
+  article: string;
+};
 
 export default function CardItemComponent(props: CardItemProps): JSX.Element {
-  const {card, handleHover} = props;
+  const {card, handleHover, width, height, article} = props;
 
   const {id, isPremium, price, previewImage, isFavorite, title, type, rating} = card;
-
-  const ratingStarline = `${rating * (100 / MAX_RATING)}%`;
 
   const handleMouseOn = () => {
     handleHover(card);
@@ -23,17 +24,17 @@ export default function CardItemComponent(props: CardItemProps): JSX.Element {
   };
 
   return(
-    <article className="cities__card place-card"
+    <article className={`${article}__card place-card`}
       onMouseEnter={handleMouseOn}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className={`${article}__image-wrapper place-card__image-wrapper`}>
         {isPremium &&
           <div className="place-card__mark">
             <span>Premium</span>
           </div>}
         <Link to={`${AppRoute.Offer}/${id}`}>
-          <img className="place-card__image" src={previewImage} width="260" height="200" alt="Place image"/>
+          <img className="place-card__image" src={previewImage} width={width} height={height} alt="Place image"/>
         </Link>
       </div>
       <div className="place-card__info">
@@ -51,7 +52,7 @@ export default function CardItemComponent(props: CardItemProps): JSX.Element {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: ratingStarline}}></span>
+            <span style={{width: RATING_STARLINE(rating)}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>

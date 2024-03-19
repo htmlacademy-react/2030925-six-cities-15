@@ -43,3 +43,5 @@ export const RATING = [
   {value: 2, label: 'badly'},
   {value: 1, label: 'terribly'},
 ];
+
+export const RATING_STARLINE = (rating: number) => `${rating * (100 / MAX_RATING)}%`;

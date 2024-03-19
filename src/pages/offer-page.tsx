@@ -1,12 +1,12 @@
 import { useParams } from 'react-router-dom';
 import HeaderComponent from '../components/header/header-component';
-import { AuthorizationStatus, MAX_RATING } from '../const';
+import { AuthorizationStatus, RATING_STARLINE } from '../const';
 import { CardType } from '../types/card-type';
 import ErrorPage from './error-page';
 import GoodsListComponent from '../components/goods-list-component';
 import OfferGalleryComponent from '../components/offer-gallery-component';
-import NearPlacesListComponent from '../components/near-places-list-component';
 import OfferReviewSectionComponent from '../components/offer-review-section-component';
+import CardListComponent from '../components/card-list-component';
 
 type OfferPageProps = {
   cards: CardType[];
@@ -20,8 +20,6 @@ export default function OfferPage({cards, authorizationStatus}: OfferPageProps):
   if (!currentCard) {
     return <ErrorPage/>;
   }
-
-  const ratingStarline = `${currentCard.rating * (100 / MAX_RATING)}%`;
 
   const {title, type, description, price, isPremium, isFavorite, rating, images, maxAdults, reviewsCount, maxBedrooms, goods, host} = currentCard;
 
@@ -53,7 +51,7 @@ export default function OfferPage({cards, authorizationStatus}: OfferPageProps):
                 </div>
                 <div className="offer__rating rating">
                   <div className="offer__stars rating__stars">
-                    <span style={{width: ratingStarline}}></span>
+                    <span style={{width: RATING_STARLINE(rating)}}></span>
                     <span className="visually-hidden">Rating</span>
                   </div>
                   <span className="offer__rating-value rating__value">{rating}</span>
@@ -103,7 +101,13 @@ export default function OfferPage({cards, authorizationStatus}: OfferPageProps):
           <div className="container">
             <section className="near-places places">
               <h2 className="near-places__title">Other places in the neighbourhood</h2>
-              <NearPlacesListComponent/>
+              <CardListComponent
+                cards={cards.slice(0,3)}
+                width={260}
+                height={200}
+                article='near-places'
+                listType='near-places__list'
+              />
             </section>
           </div>
         </main>

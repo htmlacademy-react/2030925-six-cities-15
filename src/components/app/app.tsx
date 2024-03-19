@@ -9,18 +9,18 @@ import PrivateRoute from '../private-route/private-route';
 import { CardType } from '../../types/card-type';
 
 type AppComponentProps = {
-  placesCount: number;
   authorizationStatus: AuthorizationStatus;
   cards: CardType[];
+  cities: string[];
 }
 
-export default function AppComponent({placesCount, authorizationStatus, cards}: AppComponentProps): JSX.Element {
+export default function AppComponent({authorizationStatus, cards, cities}: AppComponentProps): JSX.Element {
   return(
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<MainPage placesCount={placesCount}/>}
+          element={<MainPage placesCount={cards.length} cards={cards} cities={cities}/>}
         />
         <Route
           path={AppRoute.Login}
@@ -34,7 +34,7 @@ export default function AppComponent({placesCount, authorizationStatus, cards}: 
           path={AppRoute.Favorites}
           element={
             <PrivateRoute authorizationStatus={authorizationStatus}>
-              <FavoritesPage/>
+              <FavoritesPage cards={cards}/>
             </PrivateRoute>
           }
         />

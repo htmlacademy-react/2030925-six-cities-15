@@ -1,4 +1,4 @@
-import { MAX_RATING } from '../const';
+import { RATING_STARLINE } from '../const';
 import { ReviewType } from '../types/review-type';
 
 type ReviewItemProps = {
@@ -9,7 +9,6 @@ export default function ReviewItemComponent(props: ReviewItemProps): JSX.Element
   const {review} = props;
   const {date, user, comment, rating} = review;
 
-  const ratingStarline = `${rating * (100 / MAX_RATING)}%`;
   return(
     <li className="reviews__item">
       <div className="reviews__user user">
@@ -23,7 +22,7 @@ export default function ReviewItemComponent(props: ReviewItemProps): JSX.Element
       <div className="reviews__info">
         <div className="reviews__rating rating">
           <div className="reviews__stars rating__stars">
-            <span style={{width: ratingStarline}}></span>
+            <span style={{width: RATING_STARLINE(rating)}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
