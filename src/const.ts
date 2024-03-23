@@ -17,6 +17,31 @@ export enum AppRoute {
   Main = '/',
   Login = '/login',
   Favorites = '/favorites',
-  Offer = 'offer/:id',
+  Offer = '/offer',
   Error = '*'
 }
+
+export const GOODS: string[] = [
+  'Wi-Fi',
+  'Washing machine',
+  'Towels',
+  'Heating',
+  'Coffee machine',
+  'Baby seat',
+  'Kitchen',
+  'Dishwasher',
+  'Cabel TV',
+  'Fridge'
+];
+
+export const MAX_RATING = 5;
+
+export const RATING = [
+  {value: 5, label: 'perfect'},
+  {value: 4, label: 'good'},
+  {value: 3, label: 'not bad'},
+  {value: 2, label: 'badly'},
+  {value: 1, label: 'terribly'},
+];
+
+export const RATING_STARLINE = (rating: number) => `${rating * (100 / MAX_RATING)}%`;

@@ -6,28 +6,35 @@ import FavoritesPage from '../../pages/favorites-page';
 import ErrorPage from '../../pages/error-page';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import PrivateRoute from '../private-route/private-route';
+import { CardType } from '../../types/card-type';
 
-export default function AppComponent(): JSX.Element {
+type AppComponentProps = {
+  authorizationStatus: AuthorizationStatus;
+  cards: CardType[];
+  cities: string[];
+}
+
+export default function AppComponent({authorizationStatus, cards, cities}: AppComponentProps): JSX.Element {
   return(
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<MainPage placesCount={5}/>}
+          element={<MainPage placesCount={cards.length} cards={cards} cities={cities}/>}
         />
         <Route
           path={AppRoute.Login}
           element={<LoginPage/>}
         />
         <Route
-          path={AppRoute.Offer}
-          element={<OfferPage/>}
+          path={`${AppRoute.Offer}/:id`}
+          element={<OfferPage cards={cards} authorizationStatus={authorizationStatus}/>}
         />
         <Route
           path={AppRoute.Favorites}
           element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
-              <FavoritesPage/>
+            <PrivateRoute authorizationStatus={authorizationStatus}>
+              <FavoritesPage cards={cards}/>
             </PrivateRoute>
           }
         />
