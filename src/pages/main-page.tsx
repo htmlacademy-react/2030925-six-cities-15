@@ -1,16 +1,17 @@
 import CardListComponent from '../components/card-list-component';
 import HeaderComponent from '../components/header/header-component';
 import LocationsListComponent from '../components/location-list-component';
-import MapComponent from '../components/map-component';
-import { CardType } from '../types/card-type';
+import MapComponent from '../components/map-component/map-component';
+import { CardType, City } from '../types/card-type';
 
 type MainPageProps = {
     placesCount: number;
     cards: CardType[];
     cities: string[];
+    city: City;
 }
 
-export default function MainPage({placesCount, cards, cities}: MainPageProps): JSX.Element {
+export default function MainPage({placesCount, cards, cities, city}: MainPageProps): JSX.Element {
   return(
     <body>
       <div className="page page--gray page--main">
@@ -50,7 +51,9 @@ export default function MainPage({placesCount, cards, cities}: MainPageProps): J
                   listType='cities__places-list places__list tabs__content'
                 />
               </section>
-              <MapComponent/>
+              <div className="cities__right-section" style={{height: '500px'}}>
+                <MapComponent city={city} cards={cards}/>
+              </div>
             </div>
           </div>
         </main>
