@@ -3,6 +3,7 @@ import HeaderComponent from '../components/header/header-component';
 import LocationsListComponent from '../components/location-list-component';
 import MapComponent from '../components/map-component/map-component';
 import { CardType, City } from '../types/card-type';
+import 'leaflet/dist/leaflet.css';
 
 type MainPageProps = {
     placesCount: number;
@@ -51,7 +52,7 @@ export default function MainPage({placesCount, cards, cities, city}: MainPagePro
                   listType='cities__places-list places__list tabs__content'
                 />
               </section>
-              <div className="cities__right-section" style={{height: '500px'}}>
+              <div className="cities__right-section">
                 <MapComponent city={city} cards={cards}/>
               </div>
             </div>

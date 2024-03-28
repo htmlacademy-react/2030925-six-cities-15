@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import leaflet, { LayerGroup } from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 import { URL_MARKER_CURRENT, URL_MARKER_DEFAULT } from '../../const';
 import { CardType, City } from '../../types/card-type';
 import useMap from '../hooks/useMap';
