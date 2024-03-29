@@ -13,6 +13,7 @@ type MainPageProps = {
 }
 
 export default function MainPage({placesCount, cards, cities, city}: MainPageProps): JSX.Element {
+
   return(
     <body>
       <div className="page page--gray page--main">
@@ -53,7 +54,11 @@ export default function MainPage({placesCount, cards, cities, city}: MainPagePro
                 />
               </section>
               <div className="cities__right-section">
-                <MapComponent city={city} cards={cards}/>
+                <MapComponent
+                  mapType='cities__map'
+                  city={city}
+                  cards={cards}
+                />
               </div>
             </div>
           </div>
