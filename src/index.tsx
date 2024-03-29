@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import AppComponent from './components/app/app';
-import { Cards } from './mocks/cards';
+import { CITY, Cards } from './mocks/cards';
 import { AuthorizationStatus, CITIES } from './const';
 
 const root = ReactDOM.createRoot(
@@ -14,6 +14,7 @@ root.render(
       authorizationStatus={AuthorizationStatus.Auth}
       cards={Cards}
       cities={CITIES}
+      city={CITY}
     />
   </React.StrictMode>
 );
