@@ -3,7 +3,6 @@ import HeaderComponent from '../components/header/header-component';
 import LocationsListComponent from '../components/location-list-component';
 import MapComponent from '../components/map-component/map-component';
 import { CardType, City } from '../types/card-type';
-import 'leaflet/dist/leaflet.css';
 
 type MainPageProps = {
     placesCount: number;
