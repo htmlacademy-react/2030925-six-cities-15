@@ -6,6 +6,7 @@ import { CardType, City } from '../../types/card-type';
 import useMap from '../hooks/useMap';
 
 type MapComponentProps = {
+  mapType: string;
   city: City;
   cards: CardType[];
   activeCardId?: string | null;
@@ -24,7 +25,7 @@ const currentCustomIcon = leaflet.icon({
 });
 
 
-export default function MapComponent({city, cards, activeCardId}: MapComponentProps): JSX.Element {
+export default function MapComponent({city, cards, activeCardId, mapType}: MapComponentProps): JSX.Element {
   const mapRef = useRef<HTMLDivElement>(null);
   const map = useMap({location: city.location, mapRef: mapRef});
   const markerLayer = useRef<LayerGroup>(leaflet.layerGroup());
@@ -52,5 +53,7 @@ export default function MapComponent({city, cards, activeCardId}: MapComponentPr
     }
   }, [activeCardId, map, cards]);
 
-  return(<section className="cities__map map" ref={mapRef}/>);
+  return(
+    <section className={`${mapType} map`} ref={mapRef}/>
+  );
 }

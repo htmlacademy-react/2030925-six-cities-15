@@ -7,6 +7,7 @@ import GoodsListComponent from '../components/goods-list-component';
 import OfferGalleryComponent from '../components/offer-gallery-component';
 import OfferReviewSectionComponent from '../components/offer-review-section-component';
 import CardListComponent from '../components/card-list-component';
+import MapComponent from '../components/map-component/map-component';
 
 type OfferPageProps = {
   cards: CardType[];
@@ -96,7 +97,12 @@ export default function OfferPage({cards, authorizationStatus}: OfferPageProps):
                 <OfferReviewSectionComponent reviewsCount={reviewsCount} isAuth={authorizationStatus === AuthorizationStatus.Auth}/>
               </div>
             </div>
-            <section className="offer__map map"></section>
+            <MapComponent
+              mapType='offer__map'
+              city={currentCard.city}
+              cards={cards.slice(0,3)}
+              activeCardId={currentCard.id}
+            />
           </section>
           <div className="container">
             <section className="near-places places">

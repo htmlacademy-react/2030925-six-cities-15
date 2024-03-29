@@ -14,7 +14,7 @@ type CardListProps = {
 export default function CardListComponent(props: CardListProps): JSX.Element {
   const {cards, width, height, article, listType} = props;
 
-  const [/*activeCard */, setActiveCard] = useState<Nullable<CardType>>(null); // Не стёр activeCard, чтобы не забыть добавить когда понадобится
+  const [/*activeCard*/, setActiveCard] = useState<Nullable<CardType>>(null); // Не стёр activeCard, чтобы не забыть добавить когда понадобится
 
   const handleHover = (card?: CardType) => {
     setActiveCard(card || null);
