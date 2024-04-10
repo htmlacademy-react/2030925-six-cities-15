@@ -7,14 +7,24 @@ import ErrorPage from '../../pages/error-page';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import PrivateRoute from '../private-route/private-route';
 import { CardType } from '../../types/card-type';
+import SpinnerComponent from '../spinner-component/spinner-component';
+import { useAppSelector } from '../hooks/store';
 
 type AppComponentProps = {
-  authorizationStatus: AuthorizationStatus;
   cards: CardType[];
   cities: string[];
 }
 
-export default function AppComponent({authorizationStatus, cards, cities}: AppComponentProps): JSX.Element {
+export default function AppComponent({cards, cities}: AppComponentProps): JSX.Element {
+
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+  const isCardsLoading = useAppSelector((state) => state.isLoading);
+
+  if (authorizationStatus === AuthorizationStatus.Unknown || isCardsLoading) {
+    return (
+      <SpinnerComponent/>
+    );
+  }
 
   return(
     <BrowserRouter>

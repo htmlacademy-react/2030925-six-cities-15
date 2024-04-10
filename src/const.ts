@@ -1,4 +1,4 @@
-import { CardType } from "./types/card-type";
+import { CardType } from './types/card-type';
 
 export const CITIES: string[] = [
   'Paris',
@@ -21,6 +21,14 @@ export enum AppRoute {
   Favorites = '/favorites',
   Offer = '/offer',
   Error = '*'
+}
+
+export enum ApiRoute {
+  Offers = '/offers',
+  Favorite = '/favorite',
+  Comments = '/comments/',
+  LogIn = '/login',
+  LogOut = '/logout'
 }
 
 export const GOODS: string[] = [
@@ -51,7 +59,7 @@ export enum SortType {
   LowToHigh = 'Price: low to high',
   HighToLow = 'Price: high to low',
   TopRatedFirst = 'Top rated first'
-};
+}
 
 export const sortCards = (cards: CardType[], type: SortType) => {
   switch (type) {
@@ -63,7 +71,7 @@ export const sortCards = (cards: CardType[], type: SortType) => {
       return cards.sort((a,b) => b.rating - a.rating);
     default:
       return cards;
-  };
+  }
 };
 
 export const RATING_STARLINE = (rating: number) => `${rating * (100 / MAX_RATING)}%`;
@@ -75,3 +83,11 @@ export const TILE_LAYER_ATTRIBUTION: string = '&copy; <a href="https://www.opens
 export const URL_MARKER_DEFAULT = 'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg';
 
 export const URL_MARKER_CURRENT = 'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/main-pin.svg';
+
+export const AUTH_TOKEN_NAME = 'six-cities-token';
+
+export const BASE_URL = 'https://15.design.htmlacademy.pro/six-cities';
+
+export const REQUEST_TIMEOUT = 5000;
+
+export const ERROR_TIMEOUT = 2000;
