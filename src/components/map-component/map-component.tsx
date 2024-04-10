@@ -53,6 +53,11 @@ export default function MapComponent({city, cards, activeCardId, mapType}: MapCo
     }
   }, [activeCardId, map, cards]);
 
+  useEffect(() => {
+    if (map) {
+      map.setView([city.location.latitude, city.location.longitude], city.location.zoom);
+    }
+  }, [map, city]);
   return(
     <section className={`${mapType} map`} ref={mapRef}/>
   );

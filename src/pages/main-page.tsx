@@ -1,17 +1,24 @@
 import CardListComponent from '../components/card-list-component';
 import HeaderComponent from '../components/header/header-component';
+import { useAppSelector } from '../components/hooks/store';
 import LocationsListComponent from '../components/location-list-component';
 import MapComponent from '../components/map-component/map-component';
-import { CardType, City } from '../types/card-type';
 
 type MainPageProps = {
-    placesCount: number;
-    cards: CardType[];
     cities: string[];
-    city: City;
 }
 
-export default function MainPage({placesCount, cards, cities, city}: MainPageProps): JSX.Element {
+export default function MainPage({cities}: MainPageProps): JSX.Element {
+
+  const cards = useAppSelector((state) => state.cards);
+
+  const currentCityName = useAppSelector((state) => state.cityName);
+
+  const currentCity = useAppSelector((state) => state.city);
+
+  const currentCards = cards.filter((card) => card.city.name === currentCityName);
+
+  const placesCount = currentCards.length;
 
   return(
     <body>
@@ -28,7 +35,7 @@ export default function MainPage({placesCount, cards, cities, city}: MainPagePro
             <div className="cities__places-container container">
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
-                <b className="places__found">{placesCount} places to stay in Amsterdam</b>
+                <b className="places__found">{placesCount} {placesCount === 1 ? 'place' : 'places'} to stay in {currentCityName}</b>
                 <form className="places__sorting" action="#" method="get">
                   <span className="places__sorting-caption">Sort by</span>
                   <span className="places__sorting-type" tabIndex={0}>
@@ -55,8 +62,8 @@ export default function MainPage({placesCount, cards, cities, city}: MainPagePro
               <div className="cities__right-section">
                 <MapComponent
                   mapType='cities__map'
-                  city={city}
-                  cards={cards}
+                  city={currentCity}
+                  cards={currentCards}
                 />
               </div>
             </div>
