@@ -5,6 +5,7 @@ type LocationsListProps = {
 };
 
 export default function LocationsListComponent({cities}: LocationsListProps): JSX.Element {
+
   return(
     <ul className="locations__list tabs__list">
       {cities.map((city: string) => (
